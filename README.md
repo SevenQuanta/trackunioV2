@@ -1,6 +1,6 @@
 ![Banner](https://github.com/trackuino/trackuino/wiki/img/trackuino-banner-narrow.png)
 
-This is the firmware for Trackuino, an open-source APRS tracker based on the Arduino platform. It was designed primarily to track high altitude balloons, so it has other handy features like reading temperature sensors and a buzzer for acoustic location.
+This is the firmware for Trackuino, ported for use with the Mega 2560 hardware by UNC SEDS, an open-source APRS tracker based on the Arduino platform. It was designed primarily to track high altitude balloons, so it has other handy features like reading temperature sensors and a buzzer for acoustic location.
 
 Trackuino is intended for use by licensed radio amateurs.
 
@@ -38,7 +38,7 @@ The single most important configuration file is "config.h". The file is self-doc
 Flashing
 ========
 
-**Important**: When flashing the Arduino/Uno32, remove the Venus GPS or the entire Trackuino shield. After flashing the firmware, you can plug it back in. The GPS and the host computer share the same serial port on the AVR, so they will conflict when used together.
+**Important**: When flashing the Arduino/Uno32, remove the Venus GPS or the entire Trackuino shield. After flashing the firmware, you can plug it back in. The GPS and the host computer share the same serial port on the AVR, so they will conflict when used together. This does not apply on the Mega 2560 provided the GPS is moved off of Serial 0.
 
 Hardware
 ========

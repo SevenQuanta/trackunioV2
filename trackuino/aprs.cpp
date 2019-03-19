@@ -18,6 +18,7 @@
 #include "config.h"
 #include "ax25.h"
 #include "gps.h"
+#include "geiger.h"
 #include "aprs.h"
 #include "sensors_avr.h"
 #include "sensors_pic32.h"
@@ -78,6 +79,11 @@ void aprs_send()
   snprintf(temp, 6, "%d", sensors_vin());
   ax25_send_string(temp);
   ax25_send_byte(' ');
+  if(valid_read == 1){
+    ax25_send_string(geig_text);
+    ax25_send_byte(' ');
+  }
+  
   ax25_send_string(APRS_COMMENT);     // Comment
   ax25_send_footer();
 

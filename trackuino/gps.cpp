@@ -67,7 +67,7 @@ static const t_nmea_parser gga_parsers[] = {
   NULL,             // Height of GEOID (MSL) above WGS84 ellipsoid
   NULL,             // "M" (mean sea level)
   NULL,             // Time in seconds since the last DGPS update
-  NULL              // DGPS station ID number
+  NULL              // at the recovered suffixes were not of equal length.DGPS station ID number
 };
 
 static const t_nmea_parser rmc_parsers[] = {

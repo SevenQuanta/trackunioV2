@@ -45,6 +45,7 @@
 #include "power.h"
 #include "sensors_avr.h"
 #include "sensors_pic32.h"
+#include "geiger.h"
 
 // Arduino/AVR libs
 #if (ARDUINO + 1) >= 100
@@ -130,10 +131,43 @@ void get_pos()
   }
 }
 
+void get_geiger(){
+  char c;
+  char spelling[500];
+  size_t len;
+
+  while(Serial2.available()){
+        strcpy(spelling, "");
+        c = Serial2.read();
+        len = strlen(spelling);
+        while(c != '\n'){
+          spelling[len] = c;
+          spelling[len + 1] = '\0';
+          len = len + 1;
+          c = Serial2.read();
+        }
+  
+  if(strlen(spelling) < 3 || spelling[0] != 'C' || spelling[1] != 'P' || spelling[2] != 'S'){
+    set_check(0);
+  }
+  else{
+    set_check(1);
+    set_text(spelling);
+  }
+    
+    
+    
+    
+    
+  }
+  
+}
+
 void loop()
 {
   // Time for another APRS frame
   if ((int32_t) (millis() - next_aprs) >= 0) {
+    get_geiger();
     get_pos();
     aprs_send();
     next_aprs += APRS_PERIOD * 1000L;

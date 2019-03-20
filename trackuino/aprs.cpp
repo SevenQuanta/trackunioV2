@@ -79,10 +79,11 @@ void aprs_send()
   snprintf(temp, 6, "%d", sensors_vin());
   ax25_send_string(temp);
   ax25_send_byte(' ');
-  if(valid_read == 1){
+  //if(valid_read == 1){
+    //valid_read = 0;
     ax25_send_string(geig_text);
     ax25_send_byte(' ');
-  }
+  //}
   
   ax25_send_string(APRS_COMMENT);     // Comment
   ax25_send_footer();

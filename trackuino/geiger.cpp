@@ -12,19 +12,20 @@
 #include <stdlib.h>
 #include <string.h>
 
-char *geig_text;
+char geig_text[300];
 int valid_read;
 
+void geig_setup(){
+  strcpy(geig_text, "Default");
+}
 void set_check(int x){
     valid_read = x;
+    return;
 }
 
-void set_text(char *val){
-    if(geig_text != NULL){
-        free(geig_text);
-    }
-    geig_text = (char *) malloc(sizeof(val));
+void set_text(char val[]){
     strcpy(geig_text, val);
+    return;
 }
 
 //Internal Variables

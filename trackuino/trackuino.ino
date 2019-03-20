@@ -77,6 +77,7 @@ void setup()
   afsk_setup();
   gps_setup();
   sensors_setup();
+  geig_setup();
 
 #ifdef DEBUG_SENS
   Serial.print("Ti=");
@@ -132,34 +133,35 @@ void get_pos()
 }
 
 void get_geiger(){
-  char c;
-  char spelling[500];
-  size_t len;
-
-  while(Serial2.available()){
-        strcpy(spelling, "");
-        c = Serial2.read();
-        len = strlen(spelling);
-        while(c != '\n'){
-          spelling[len] = c;
-          spelling[len + 1] = '\0';
-          len = len + 1;
-          c = Serial2.read();
-        }
-  
-  if(strlen(spelling) < 3 || spelling[0] != 'C' || spelling[1] != 'P' || spelling[2] != 'S'){
-    set_check(0);
+  char rc;
+  static byte ndx = 0;
+  strcpy(geig_text, "");
+  //char spelling[500];
+  if(Serial2.available() > 0){
+    while(Serial2.available()){
+      rc = Serial2.read();
+      if(rc != '\n' && rc != '\r'){
+        geig_text[ndx] = rc;
+        ndx++;
+      }
+      else{
+        geig_text[ndx] = '\0';
+        ndx = 0;
+        return;
+      }
+    }
   }
-  else{
-    set_check(1);
-    set_text(spelling);
-  }
+  //Serial.print(spelling);
+  //if(strlen(spelling) < 3 || spelling[0] != 'C' || spelling[1] != 'P' || spelling[2] != 'S'){
+   // valid_read = 0;
+  //}
+  //else{
+    valid_read = 1;
+    //strcpy(geig_text, spelling);
+    Serial.print(geig_text);
+  //}
+  //strcpy(geig_text, "Good");
     
-    
-    
-    
-    
-  }
   
 }
 

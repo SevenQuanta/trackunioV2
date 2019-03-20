@@ -146,7 +146,7 @@ void get_geiger(){
           len = len + 1;
           c = Serial2.read();
         }
-  
+  }
   if(strlen(spelling) < 3 || spelling[0] != 'C' || spelling[1] != 'P' || spelling[2] != 'S'){
     set_check(0);
   }
@@ -159,7 +159,7 @@ void get_geiger(){
     
     
     
-  }
+  
   
 }
 

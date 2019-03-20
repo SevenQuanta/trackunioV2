@@ -83,7 +83,6 @@ void aprs_send()
     ax25_send_string(geig_text);
     ax25_send_byte(' ');
   }
-  
   ax25_send_string(APRS_COMMENT);     // Comment
   ax25_send_footer();
 

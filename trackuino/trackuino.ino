@@ -135,11 +135,9 @@ void get_pos()
 }
 
 void get_geiger(){
-<<<<<<< HEAD
   char c;
   std::string spelling;
   
-
   while(Serial2.available()){
         spelling.clear();
         c = Serial2.read();
@@ -164,35 +162,7 @@ void get_geiger(){
     set_check(1);
     set_text(spelling);
   }
-    
-    
-    
-    
-    
   
-  
-=======
-
-  char rc;
-  static byte ndx = 0;
-  strcpy(geig_text, "");
-  //char spelling[500];
-  if(Serial2.available() > 0){
-    while(Serial2.available()){
-      rc = Serial2.read();
-      if(rc != '\n' && rc != '\r'){
-        geig_text[ndx] = rc;
-        ndx++;
-      }
-      else{
-        geig_text[ndx] = '\0';
-        ndx = 0;
-        return;
-      }
-    }
-  } 
-
->>>>>>> 4170db90ced979cc1f0f37559868b42c3fb69e8d
 }
 
 void loop()

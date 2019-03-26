@@ -15,8 +15,12 @@
 char *geig_text;
 int valid_read;
 
+void geig_setup(){
+  strcpy(geig_text, "Default");
+}
 void set_check(int x){
     valid_read = x;
+    return;
 }
 
 void set_text(std::string val){

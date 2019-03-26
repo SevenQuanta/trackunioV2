@@ -8,8 +8,9 @@
 
 
 
-extern char *geig_text;
+extern char geig_text[300];
 extern int valid_read;
 
 void set_check(int x);
 void set_text(char *val);
+void geig_setup();

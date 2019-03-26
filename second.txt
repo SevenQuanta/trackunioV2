@@ -71,4 +71,4 @@ CPS, 1, CPM, 117, uSv/hr, 0.66, SLOW
 CPS, 2, CPM, 118, uSv/hr, 0.67, SLOW
 CPS, 4, CPM, 119, uSv/hr, 0.67, SLOW
 CPS, 4, CPM, 122, uSv/hr, 0.69, SLOW
-CPS, 2, CPM, 122, uSv/hr, 0.69, SLOW
+CPS, 2, CPM, 122, uSv/hr, 0.69, SLOW

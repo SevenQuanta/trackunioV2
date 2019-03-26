@@ -11,7 +11,7 @@
 #include "geiger.h"
 #include <stdlib.h>
 #include <string.h>
-
+#include <string>
 char *geig_text;
 int valid_read;
 
@@ -19,12 +19,12 @@ void set_check(int x){
     valid_read = x;
 }
 
-void set_text(char *val){
+void set_text(std::string val){
     if(geig_text != NULL){
         free(geig_text);
     }
     geig_text = (char *) malloc(sizeof(val));
-    strcpy(geig_text, val);
+    strcpy(geig_text, val.c_str());
 }
 
 //Internal Variables

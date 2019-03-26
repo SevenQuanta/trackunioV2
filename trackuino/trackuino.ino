@@ -46,6 +46,8 @@
 #include "sensors_avr.h"
 #include "sensors_pic32.h"
 #include "geiger.h"
+#include <iostream>
+#include <string>
 
 // Arduino/AVR libs
 #if (ARDUINO + 1) >= 100
@@ -133,21 +135,27 @@ void get_pos()
 
 void get_geiger(){
   char c;
-  char spelling[500];
-  size_t len;
+  std::string spelling;
+  
 
   while(Serial2.available()){
-        strcpy(spelling, "");
+        spelling.clear();
         c = Serial2.read();
-        len = strlen(spelling);
         while(c != '\n'){
-          spelling[len] = c;
-          spelling[len + 1] = '\0';
-          len = len + 1;
-          c = Serial2.read();
+          if(c != '\r'){
+            spelling += c;
+            if(Serial2.available())
+              c = Serial2.read();
+          }
+          else{
+            if(Serial2.available())
+              c = Serial2.read();
+          }
+          
         }
+        
   }
-  if(strlen(spelling) < 3 || spelling[0] != 'C' || spelling[1] != 'P' || spelling[2] != 'S'){
+  if(spelling.length() < 3 || spelling[0] != 'C' || spelling[1] != 'P' || spelling[2] != 'S'){
     set_check(0);
   }
   else{

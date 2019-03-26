@@ -150,19 +150,7 @@ void get_geiger(){
         return;
       }
     }
-  }
-  //Serial.print(spelling);
-  //if(strlen(spelling) < 3 || spelling[0] != 'C' || spelling[1] != 'P' || spelling[2] != 'S'){
-   // valid_read = 0;
-  //}
-  //else{
-    valid_read = 1;
-    //strcpy(geig_text, spelling);
-    Serial.print(geig_text);
-  //}
-  //strcpy(geig_text, "Good");
-    
-  
+  } 
 }
 
 void loop()

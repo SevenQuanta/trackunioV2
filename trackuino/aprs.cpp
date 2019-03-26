@@ -84,9 +84,9 @@ void aprs_send()
     ax25_send_string(geig_text);
     ax25_send_byte(' ');
   //}
-  
   ax25_send_string(APRS_COMMENT);     // Comment
   ax25_send_footer();
+  Serial.write('\n');
 
   ax25_flush_frame();                 // Tell the modem to go
 }

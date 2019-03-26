@@ -83,7 +83,9 @@ void aprs_send()
     //valid_read = 0;
     ax25_send_string(geig_text);
     ax25_send_byte(' ');
+
   //}
+
   ax25_send_string(APRS_COMMENT);     // Comment
   ax25_send_footer();
   Serial.write('\n');

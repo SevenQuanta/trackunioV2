@@ -133,6 +133,7 @@ void get_pos()
 }
 
 void get_geiger(){
+
   char rc;
   static byte ndx = 0;
   strcpy(geig_text, "");
@@ -151,6 +152,7 @@ void get_geiger(){
       }
     }
   } 
+
 }
 
 void loop()

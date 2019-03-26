@@ -135,33 +135,35 @@ void get_pos()
 }
 
 void get_geiger(){
-  char c;
-  std::string spelling;
-  
-  while(Serial2.available()){
-        spelling.clear();
-        c = Serial2.read();
-        while(c != '\n'){
-          if(c != '\r'){
-            spelling += c;
-            if(Serial2.available())
-              c = Serial2.read();
-          }
-          else{
-            if(Serial2.available())
-              c = Serial2.read();
-          }
-          
-        }
-        
+  char rc;
+  static byte ndx = 0;
+  strcpy(geig_text, "");
+  //char spelling[500];
+  if(Serial2.available() > 0){
+    while(Serial2.available()){
+      rc = Serial2.read();
+      if(rc != '\n' && rc != '\r'){
+        geig_text[ndx] = rc;
+        ndx++;
+      }
+      else{
+        geig_text[ndx] = '\0';
+        ndx = 0;
+        return;
+      }
+    }
   }
-  if(spelling.length() < 3 || spelling[0] != 'C' || spelling[1] != 'P' || spelling[2] != 'S'){
-    set_check(0);
-  }
-  else{
-    set_check(1);
-    set_text(spelling);
-  }
+  //Serial.print(spelling);
+  //if(strlen(spelling) < 3 || spelling[0] != 'C' || spelling[1] != 'P' || spelling[2] != 'S'){
+   // valid_read = 0;
+  //}
+  //else{
+    valid_read = 1;
+    //strcpy(geig_text, spelling);
+    Serial.print(geig_text);
+  //}
+  //strcpy(geig_text, "Good");
+    
   
 }
 

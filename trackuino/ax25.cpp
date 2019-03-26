@@ -77,7 +77,9 @@ ax25_send_byte(uint8_t a_byte)
 {
   // Wrap around send_byte, but prints debug info
   send_byte(a_byte);
-  Serial.print((char)a_byte);
+#ifdef DEBUG_AX25
+  Serial3.print((char)a_byte);
+#endif
 }
 
 void
